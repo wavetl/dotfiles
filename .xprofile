@@ -1,5 +1,5 @@
+xinput --set-prop 'Logitech Gaming Mouse G400' 'Device Accel Constant Deceleration' 1.5
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
-
-xinput --set-prop 'Logitech Gaming Mouse G400' 'Device Accel Constant Deceleration' 1.5
