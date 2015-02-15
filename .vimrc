@@ -13,7 +13,6 @@ set fileencodings=utf-8,gb2312
 set mh
 set ar
 set mouse=a
-set cursorline
 set acd
 
 "Vundle
@@ -41,5 +40,3 @@ filetype plugin indent on
 colo pt_black
 
 autocmd! bufwritepost $MYVIMRC source %
-
-
