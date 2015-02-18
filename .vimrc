@@ -15,6 +15,8 @@ set ar
 set mouse=a
 set acd
 
+syntax on
+
 "Vundle
 
 set rtp+=~/.vim/bundle/Vundle.vim
