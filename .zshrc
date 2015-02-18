@@ -79,4 +79,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias goagent="python ~/Apps/goagent/local/proxy.py"
+alias goagent="python2.7 ~/Apps/goagent/local/proxy.py"
