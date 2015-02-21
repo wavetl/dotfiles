@@ -22,11 +22,10 @@ syntax on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
- Plugin 'gmarik/Vundle.vim'
- Plugin 'kien/ctrlp.vim'
- Plugin 'vim-scripts/mru.vim'
- Plugin 'Lokaltog/vim-powerline'
- Plugin 'yantze/pt_black'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/mru.vim'
+Plugin 'Lokaltog/vim-powerline'
 
 call vundle#end()
 
@@ -38,7 +37,5 @@ let g:ctrlp_map = '<c-p>'
 map <F6> <Esc>:MRU<CR>
 
 filetype plugin indent on
-
-colo pt_black
 
 autocmd! bufwritepost $MYVIMRC source %
