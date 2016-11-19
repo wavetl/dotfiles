@@ -27,7 +27,7 @@ syntax on
 
 autocmd! bufwritepost $MYVIMRC source %
 
-colorscheme hemisu
+colorscheme wombat
 
 set background=dark
 
