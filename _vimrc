@@ -42,6 +42,11 @@ set cursorline
 "MRU
 map <F6> <Esc>:MRU<CR>
 
+"NERDTree
+map <F5> <Esc>:NERDTreeToggle<CR>
+let NERDTreeWinPos=1
+let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
+
 let mapleader=','
 :nnoremap <leader>s vi{:sort<cr>
 
