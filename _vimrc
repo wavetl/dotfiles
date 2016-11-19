@@ -10,7 +10,11 @@ set noudf
 set guioptions-=m
 set guioptions-=T
 
-set noai
+set ai
+set si
+set showmatch
+set mousehide
+set showcmd
 
 set tabstop=4
 set shiftwidth=4
@@ -33,9 +37,17 @@ set background=dark
 
 set guifont=Source_Code_Pro:h11
 
-set columns=105
-set lines=49
-
 set cursorline
 
-winpos 941 0
+"MRU
+map <F6> <Esc>:MRU<CR>
+
+let mapleader=','
+:nnoremap <leader>s vi{:sort<cr>
+
+"For windows
+if has('windows')
+	winpos 941 1
+	set columns=105
+	set lines=49
+endif
