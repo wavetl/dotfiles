@@ -27,11 +27,15 @@ syntax on
 
 autocmd! bufwritepost $MYVIMRC source %
 
-colorscheme wombat
+colorscheme hemisu
+
+set background=dark
 
 set guifont=Source_Code_Pro:h11
 
 set columns=105
 set lines=49
+
+set cursorline
 
 winpos 941 1
