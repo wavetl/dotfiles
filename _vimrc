@@ -38,4 +38,4 @@ set lines=49
 
 set cursorline
 
-winpos 941 1
+winpos 941 0
