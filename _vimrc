@@ -6,6 +6,7 @@ set nobk
 set nocp
 set noswf
 set noudf
+set ar
 
 set guioptions-=m
 set guioptions-=T
@@ -38,6 +39,10 @@ set background=dark
 set guifont=Source_Code_Pro:h11
 
 set cursorline
+
+"Key mapping
+
+map <F9> <Esc>:nohl<CR>
 
 "MRU
 map <F6> <Esc>:MRU<CR>
