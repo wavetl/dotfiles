@@ -5,20 +5,20 @@ if has("windows")
 	behave mswin
 endif
 
-set nobk
-set nocp
-set noswf
-set noudf
-set ar
+set nobackup
+set nocompatible
+set noswapfile
+set noundofile
+set autoread
 
 set guioptions-=m
 set guioptions-=T
 
-set ai
-set si
+set autoindent smartindent
 set showmatch
 set mousehide
 set showcmd
+set noerrorbells visualbell t_vb=
 
 set tabstop=4
 set shiftwidth=4
@@ -59,13 +59,13 @@ function! ToggleHLS()
 	endif
 endfunction
 
-map <F9> <Esc>:call ToggleHLS()<CR>
+map <silent><F9> <Esc>:call ToggleHLS()<CR>
 
 "MRU
-map <F6> <Esc>:MRU<CR>
+map <silent><F6> <Esc>:MRU<CR>
 
 "NERDTree
-map <F5> <Esc>:NERDTreeToggle<CR>
+map <silent><F5> <Esc>:NERDTreeToggle<CR>
 let NERDTreeWinPos=1
 let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
 let NERDTreeChDirMode=2
