@@ -44,8 +44,22 @@ set guifont=Source_Code_Pro:h11
 set cursorline
 
 "Key mapping
+"
 
-map <F9> <Esc>:nohl<CR>
+function! ToggleHLS()
+	if !exists('b:togglehls')
+		let b:togglehls=1
+	endif
+	if b:togglehls == 1
+		execute 'set nohls'
+		let b:togglehls=0
+	else
+		execute "set hls"
+		let b:togglehls=1
+	endif
+endfunction
+
+map <F9> <Esc>:call ToggleHLS()<CR>
 
 "MRU
 map <F6> <Esc>:MRU<CR>
@@ -55,6 +69,7 @@ map <F5> <Esc>:NERDTreeToggle<CR>
 let NERDTreeWinPos=1
 let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
 let NERDTreeChDirMode=2
+"let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
 let NERDTreeQuitOnOpen=1
 
@@ -67,3 +82,4 @@ if has('windows')
 	set columns=105
 	set lines=49
 endif
+
