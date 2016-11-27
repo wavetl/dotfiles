@@ -55,7 +55,6 @@ map <F5> <Esc>:NERDTreeToggle<CR>
 let NERDTreeWinPos=1
 let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
 let NERDTreeChDirMode=2
-let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
 let NERDTreeQuitOnOpen=1
 
