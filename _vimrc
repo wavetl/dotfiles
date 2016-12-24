@@ -128,7 +128,14 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+" select all
+map <Leader>sa ggVG
+
+" 启动的时候不显示那个援助乌干达儿童的提示
+set shortmess=atI
 
 colorscheme Tomorrow-Night-Blue
 
