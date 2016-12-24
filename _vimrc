@@ -25,16 +25,16 @@ set number
 
 set report=0
 
-set foldmethod=indent
-
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
 set guioptions-=e
 
-set mouse=a
+set mouse-=a
 set acd
+
+set title
 
 syntax on
 
@@ -43,6 +43,14 @@ syntax on
 set guifont=Fira_Code:h11
 
 set cursorline
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" Always show the status line - use 2 lines for the status bar
+set laststatus=2
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
 "Key mapping
 "
@@ -80,8 +88,25 @@ let mapleader=','
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
 map <leader>th :tabp<cr>
-map <leader>tl :tabn<cr>
+map <leader>tl :tabnext<cr>
 map <leader>q :q<cr>
+
+noremap <F1> <Esc>"
+
+
+" F2 行号开关，用于鼠标复制代码用
+" 为方便复制，用<F2>开启/关闭行号显示:
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
 
 "For windows
 if has('windows')
@@ -92,6 +117,18 @@ if has('windows')
 	map <leader>ex :!start explorer %:p:h<CR>
 
 endif
+
+" 复制选中区到系统剪切板中
+vnoremap <leader>y "+y
+
+" 保存python文件时删除多余空格
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 colorscheme Tomorrow-Night-Blue
 
