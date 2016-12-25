@@ -1,41 +1,141 @@
-set nobk
-set nocp
-set noswf
-set noai
+if has("windows")
+	source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/mswin.vim
+	behave mswin
+endif
 
-set ts=4
-set nu
+set nobackup
+set nocompatible
+set noswapfile
+set noundofile
+set autoread
+
+set guioptions-=m
+set guioptions-=T
+
+set autoindent smartindent
+set showmatch
+set mousehide
+set showcmd
+set noerrorbells novisualbell t_vb=
+
+set tabstop=4
+set shiftwidth=4
+set number
+
+set report=0
 
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,gb2312
+set fileencodings=utf-8
 
-set mh
-set ar
+set guioptions-=e
+
 set mouse=a
 set acd
 
+set title
+
 syntax on
 
-"Vundle
+"set guifont=Source_Code_Pro:h11
+set guifont=DejaVu\ Sans\ Mono:h11
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set cursorline
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/mru.vim'
-Plugin 'Lokaltog/vim-powerline'
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" Always show the status line - use 2 lines for the status bar
+set laststatus=2
 
-call vundle#end()
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
-"ctrip
-let g:ctrlp_map = '<c-p>'
+"Key mapping
+"
 
+function! ToggleHLS()
+	if !exists('b:togglehls')
+		let b:togglehls=1
+	endif
+	if b:togglehls == 1
+		execute 'set nohls'
+		let b:togglehls=0
+	else
+		execute "set hls"
+		let b:togglehls=1
+	endif
+endfunction
+
+map <silent><F9> <Esc>:call ToggleHLS()<CR>
 
 "MRU
-map <F6> <Esc>:MRU<CR>
+map <silent><F6> <Esc>:MRU<CR>
 
-filetype plugin indent on
+"NERDTree
+map <silent><F5> <Esc>:NERDTreeToggle<CR>
+let NERDTreeWinPos=1
+let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
+let NERDTreeChDirMode=2
+"let NERDTreeMinimalUI=1
+let NERDTreeShowBookmarks=1
+let NERDTreeQuitOnOpen=1
+
+let mapleader=','
+:nnoremap <leader>s vi{:sort<cr>
+
+map <leader>tn :tabnew<cr>
+map <leader>tc :tabclose<cr>
+map <leader>th :tabp<cr>
+map <leader>tl :tabnext<cr>
+map <leader>q :q<cr>
+
+noremap <F1> <Esc>"
+
+
+" F2 行号开关，用于鼠标复制代码用
+" 为方便复制，用<F2>开启/关闭行号显示:
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
+
+"For windows
+if has('windows')
+	winpos 941 1
+	set columns=105
+	set lines=49
+	" 打开当前目录 windows
+	map <leader>ex :!start explorer %:p:h<CR>
+
+endif
+
+" 复制选中区到系统剪切板中
+vnoremap <leader>y "+y
+
+" 保存python文件时删除多余空格
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+" select all
+map <Leader>sa ggVG
+
+" 启动的时候不显示那个援助乌干达儿童的提示
+set shortmess=atI
+
+colorscheme Tomorrow-Night-Blue
 
 autocmd! bufwritepost $MYVIMRC source %
