@@ -31,7 +31,7 @@ set fileencodings=utf-8
 
 set guioptions-=e
 
-set mouse-=a
+set mouse=a
 set acd
 
 set title
