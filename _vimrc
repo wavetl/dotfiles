@@ -40,7 +40,7 @@ syntax on
 
 "set guifont=Source_Code_Pro:h12
 
-set guifont=Fira_Code:h11
+set guifont=Dejavu_Sans_Mono:h10
 
 set cursorline
 
@@ -140,3 +140,4 @@ set shortmess=atI
 colorscheme Tomorrow-Night-Blue
 
 autocmd! bufwritepost $MYVIMRC source %
+
