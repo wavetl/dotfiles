@@ -40,7 +40,7 @@ syntax on
 
 "set guifont=Source_Code_Pro:h12
 
-set guifont=Dejavu_Sans_Mono:h10
+set guifont=Dejavu_Sans_Mono:h11
 
 set cursorline
 
@@ -132,12 +132,13 @@ endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " select all
-map <Leader>sa ggVG
+nmap <silent><leader>sa ggVG
+
+nmap <silent><leader>ev :e $MYVIMRC<CR>
 
 " 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
 
-colorscheme Tomorrow-Night-Blue
+colorscheme Tomorrow
 
 autocmd! bufwritepost $MYVIMRC source %
-
