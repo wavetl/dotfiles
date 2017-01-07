@@ -38,15 +38,14 @@ set title
 
 syntax on
 
-"set guifont=Source_Code_Pro:h11
-set guifont=DejaVu\ Sans\ Mono:h11
+set guifont=Menlo:h15
 
 set cursorline
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+"set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 " Always show the status line - use 2 lines for the status bar
-set laststatus=2
+"set laststatus=2
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -67,9 +66,8 @@ function! ToggleHLS()
 	endif
 endfunction
 
-map <silent><F9> <Esc>:call ToggleHLS()<CR>
+map <leader>h :call ToggleHLS()<CR>
 
-"MRU
 map <silent><F6> <Esc>:MRU<CR>
 
 "NERDTree
@@ -131,11 +129,36 @@ endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " select all
-map <Leader>sa ggVG
+nmap <silent><leader>sa ggVG
+
+nmap <silent><leader>ev :e $MYVIMRC<CR>
 
 " 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
 
-colorscheme Tomorrow-Night-Blue
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'vim-scripts/mru.vim'
+
+Plugin 'Lokaltog/vim-powerline'
+" plugin from http://vim-scripts.org/vim/scripts.html
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+if has('gui_running')
+	colorscheme macvim
+endif
 
 autocmd! bufwritepost $MYVIMRC source %
