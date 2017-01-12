@@ -38,14 +38,16 @@ set title
 
 syntax on
 
-set guifont=Menlo:h15
+if has('gui_running')
+	set guifont=Menlo:h15
+endif
 
 set cursorline
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
-"set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 " Always show the status line - use 2 lines for the status bar
-"set laststatus=2
+set laststatus=2
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -66,8 +68,7 @@ function! ToggleHLS()
 	endif
 endfunction
 
-map <leader>h :call ToggleHLS()<CR>
-
+map <silent><F9> <Esc>:call ToggleHLS()<CR>
 map <silent><F6> <Esc>:MRU<CR>
 
 "NERDTree
@@ -131,7 +132,7 @@ autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,pe
 " select all
 nmap <silent><leader>sa ggVG
 
-nmap <silent><leader>ev :e $MYVIMRC<CR>
+nmap <silent><leader>ev :tabnew $MYVIMRC<CR>
 
 " 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
@@ -150,15 +151,19 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'vim-scripts/mru.vim'
 
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'sickill/vim-monokai'
+
+Plugin 'vim-airline/vim-airline'
 " plugin from http://vim-scripts.org/vim/scripts.html
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-if has('gui_running')
-	colorscheme macvim
-endif
+colorscheme Tomorrow
 
 autocmd! bufwritepost $MYVIMRC source %
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
