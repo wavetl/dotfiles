@@ -1,9 +1,3 @@
-if has("windows")
-	source $VIMRUNTIME/vimrc_example.vim
-	source $VIMRUNTIME/mswin.vim
-	behave mswin
-endif
-
 set nobackup
 set nocompatible
 set noswapfile
@@ -27,7 +21,7 @@ set report=0
 
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
+set fileencodings=utf-8,euc-kr,cp949
 
 set guioptions-=e
 
@@ -44,10 +38,6 @@ endif
 
 set cursorline
 
-" 命令行（在状态行下）的高度，默认为1，这里是2
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-" Always show the status line - use 2 lines for the status bar
-set laststatus=2
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -106,16 +96,6 @@ function! HideNumber()
 endfunc
 nnoremap <F2> :call HideNumber()<CR>
 
-"For windows
-if has('windows')
-	winpos 941 1
-	set columns=105
-	set lines=49
-	" 打开当前目录 windows
-	map <leader>ex :!start explorer %:p:h<CR>
-
-endif
-
 " 复制选中区到系统剪切板中
 vnoremap <leader>y "+y
 
@@ -150,10 +130,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'vim-scripts/mru.vim'
+Plugin 'Lokaltog/vim-powerline'
 
 Plugin 'sickill/vim-monokai'
 
-Plugin 'vim-airline/vim-airline'
 " plugin from http://vim-scripts.org/vim/scripts.html
 
 " All of your Plugins must be added before the following line
@@ -164,6 +144,4 @@ colorscheme Tomorrow
 
 autocmd! bufwritepost $MYVIMRC source %
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+set laststatus=2
