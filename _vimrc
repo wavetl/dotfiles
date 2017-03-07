@@ -27,7 +27,7 @@ set report=0
 
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
+set fileencodings=utf-8,euc-kr,gb2312,gbk,big5
 
 set guioptions-=e
 
@@ -45,9 +45,7 @@ set guifont=Dejavu_Sans_Mono:h11
 set cursorline
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-" Always show the status line - use 2 lines for the status bar
-set laststatus=2
+"set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -78,7 +76,7 @@ map <silent><F5> <Esc>:NERDTreeToggle<CR>
 let NERDTreeWinPos=1
 let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
 let NERDTreeChDirMode=2
-"let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=0
 let NERDTreeShowBookmarks=1
 let NERDTreeQuitOnOpen=1
 
@@ -110,9 +108,9 @@ nnoremap <F2> :call HideNumber()<CR>
 
 "For windows
 if has('windows')
-	winpos 941 1
+	winpos 1165 191
 	set columns=105
-	set lines=49
+	set lines=45
 	" 打开当前目录 windows
 	map <leader>ex :!start explorer %:p:h<CR>
 
@@ -136,9 +134,30 @@ nmap <silent><leader>sa ggVG
 
 nmap <silent><leader>ev :e $MYVIMRC<CR>
 
+set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+Plugin 'vim-scripts/mru.vim'
+Plugin 'Lokaltog/vim-powerline'
+
+Plugin 'sickill/vim-monokai'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
 
-colorscheme Tomorrow
+set background=light
+colorscheme Solarized
 
 autocmd! bufwritepost $MYVIMRC source %
+
+set laststatus=2
