@@ -9,6 +9,7 @@ set nocompatible
 set noswapfile
 set noundofile
 set autoread
+set history=1024
 
 set guioptions-=m
 set guioptions-=T
@@ -38,14 +39,9 @@ set title
 
 syntax on
 
-"set guifont=Source_Code_Pro:h12
-
 set guifont=Dejavu_Sans_Mono:h11
 
 set cursorline
-
-" 命令行（在状态行下）的高度，默认为1，这里是2
-"set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -132,10 +128,13 @@ autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,pe
 " select all
 nmap <silent><leader>sa ggVG
 
+" copy current filepath to cilpboard
+nmap ,fp :let @*=substitute(expand("%:p"), "/", "\\", "g")<CR>
+
 nmap <silent><leader>ev :e $MYVIMRC<CR>
 
-set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+set rtp+=$USERPROFILE/.vim/bundle/Vundle.vim/
+call vundle#begin('$USERPROFILE/.vim/bundle/')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -144,19 +143,27 @@ Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 Plugin 'vim-scripts/mru.vim'
+let MRU_Max_Entries = 1024
+let MRU_Window_Height = 10
+
+
 Plugin 'Lokaltog/vim-powerline'
 
-Plugin 'sickill/vim-monokai'
-
 " All of your Plugins must be added before the following line
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
 call vundle#end()            " required
-filetype plugin indent on    " required
+
+filetype plugin on
 
 " 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
 
-set background=light
-colorscheme Solarized
+"set background=dark
+colorscheme Tomorrow-Night-Blue
 
 autocmd! bufwritepost $MYVIMRC source %
 
