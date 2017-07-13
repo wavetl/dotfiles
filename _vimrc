@@ -39,7 +39,8 @@ set title
 
 syntax on
 
-set guifont=Dejavu_Sans_Mono:h11
+"set guifont=Dejavu_Sans_Mono:h11
+set guifont=Inconsolata:h13:cANSI
 
 set cursorline
 
