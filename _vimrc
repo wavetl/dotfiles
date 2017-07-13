@@ -39,7 +39,6 @@ set title
 
 syntax on
 
-"set guifont=Dejavu_Sans_Mono:h11
 set guifont=Inconsolata:h13:cANSI
 
 set cursorline
@@ -160,10 +159,8 @@ call vundle#end()            " required
 
 filetype plugin on
 
-" 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
 
-"set background=dark
 colorscheme Tomorrow-Night-Blue
 
 autocmd! bufwritepost $MYVIMRC source %
