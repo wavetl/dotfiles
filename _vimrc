@@ -105,8 +105,8 @@ nnoremap <F2> :call HideNumber()<CR>
 "For windows
 if has('windows')
 	winpos 1165 191
-	set columns=105
-	set lines=45
+	set columns=120
+	set lines=52
 	" 打开当前目录 windows
 	map <leader>ex :!start explorer %:p:h<CR>
 
@@ -154,6 +154,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'joshdick/onedark.vim'
 
 call vundle#end()            " required
 
