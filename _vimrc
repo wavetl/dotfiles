@@ -4,7 +4,10 @@ if has("windows")
 	behave mswin
 endif
 
-set nobackup
+set backup
+set backupdir=D:/VimBackup
+set backupext=.bak
+
 set nocompatible
 set noswapfile
 set noundofile
