@@ -68,13 +68,13 @@ map <silent><F9> <Esc>:call ToggleHLS()<CR>
 map <silent><F6> <Esc>:MRU<CR>
 
 "NERDTree
-map <silent><F5> <Esc>:NERDTreeToggle<CR>
-let NERDTreeWinPos=1
-let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
-let NERDTreeChDirMode=2
-let NERDTreeMinimalUI=0
-let NERDTreeShowBookmarks=1
-let NERDTreeQuitOnOpen=1
+"map <silent><F5> <Esc>:NERDTreeToggle<CR>
+"let NERDTreeWinPos=1
+"let NERDTreeIgnore=['\.exe$','\.bat$','\.dll$','\.jpg$','\.gif$','\.png$','\~$']
+"let NERDTreeChDirMode=2
+"let NERDTreeMinimalUI=0
+"let NERDTreeShowBookmarks=1
+"let NERDTreeQuitOnOpen=1
 
 let mapleader=','
 :nnoremap <leader>s vi{:sort<cr>
@@ -150,7 +150,6 @@ let MRU_Window_Height = 10
 Plugin 'Lokaltog/vim-powerline'
 
 " All of your Plugins must be added before the following line
-
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
