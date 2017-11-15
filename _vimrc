@@ -154,6 +154,11 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'joshdick/onedark.vim'
+Plugin 'kien/ctrlp.vim'
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 
 call vundle#end()            " required
 
@@ -161,7 +166,8 @@ filetype plugin on
 
 set shortmess=atI
 
-colorscheme Tomorrow-Night-Blue
+"colorscheme Tomorrow-Night-Blue
+colorscheme Onedark
 
 autocmd! bufwritepost $MYVIMRC source %
 
